@@ -11,11 +11,11 @@ var app = new Vue({
   el: '#app',
   data: {
     shapes: ['circle', 'square', 'triangle', 'pentagon'],
-    activeShape: false
+    activeShape: 'circle'
   },
   methods: {
-    isActive: function(link) {
-      return link === this.activeShape
+    isActive: function(shape) {
+      return shape === this.activeShape
     },
     handleClick: function(shape) {
       this.activeShape = shape
@@ -24,7 +24,7 @@ var app = new Vue({
   template: `
     <div>
       <shape-selector
-        v-for="shape of shapes"
+        v-for="shape in shapes"
         v-bind:shape="shape"
         v-bind:class="{ active: isActive(shape) }"
         v-on:shape-clicked="handleClick"
